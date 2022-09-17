@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.recipes.ui.main.view.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_recipe"
+            app:destination="@id/recipe" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.example.recipes.ui.main.view.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_recipe"
+            app:destination="@id/recipe" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipe"
+        android:name="com.example.recipes.ui.main.view.RecipeFragment"
+        android:label="Recipe"
+        tools:layout="@layout/fragment_recipe" />
+    <fragment
+        android:id="@+id/most_popular_recipe"
+        android:name="com.example.recipes.ui.main.view.MostPopularRecipeFragment"
+        android:label="Hot Recipe"
+        tools:layout="@layout/fragment_most_popular_recipe" />
+</navigation>

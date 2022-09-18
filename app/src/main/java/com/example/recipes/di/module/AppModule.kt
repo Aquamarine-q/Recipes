@@ -16,14 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val BASE_URL = "https://api.spoonacular.com/"
 
 val appModule = module {
-    factory { provideOkHttpClient() }
-    factory { provideRetrofit(get(), BASE_URL) }
-    factory{ get<Retrofit>().create(ApiService::class.java) }
-    //factory { provideApiService(get()) }
-    factory { provideNetworkHelper(androidContext()) }
+    single { provideOkHttpClient() }
+    single { provideRetrofit(get(), BASE_URL) }
+    single { get<Retrofit>().create(ApiService::class.java) }
+    single { provideNetworkHelper(androidContext()) }
 
-    factory<ApiHelper> {
-        return@factory ApiHelperImpl(get())
+    single<ApiHelper> {
+        return@single ApiHelperImpl(get())
     }
 }
 
@@ -48,6 +47,3 @@ private fun provideRetrofit(
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
-
-/*private fun provideApiService(retrofit: Retrofit): ApiService =
-    retrofit.create(ApiService::class.java)*/

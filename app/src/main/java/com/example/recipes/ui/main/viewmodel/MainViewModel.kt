@@ -18,6 +18,7 @@ class MainViewModel(
     private val _recipes = MutableLiveData<Resource<Recipes>>()
     val recipes: LiveData<Resource<Recipes>>
         get() = _recipes
+
     init {
         fetchRecipes()
     }

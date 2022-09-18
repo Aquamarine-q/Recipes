@@ -4,7 +4,7 @@ import com.example.recipes.data.repository.MainRepository
 import org.koin.dsl.module
 
 val repoModule = module {
-    factory {
+    single {
         MainRepository(get())
     }
 }

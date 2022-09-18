@@ -23,7 +23,7 @@ class RecipeAdapter(
         val imageView: ImageView = view.findViewById(R.id.dish_photo)
 
         init {
-            view.setOnClickListener{
+            view.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
@@ -33,7 +33,7 @@ class RecipeAdapter(
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener){
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
@@ -52,12 +52,11 @@ class RecipeAdapter(
             .load(item.image)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.imageView)
-        //holder.imageView.setImageResource(item.sourceURL.toInt())
     }
 
     override fun getItemCount() = dataset.size
 
     fun addData(recipes: Recipes) {
-            dataset.addAll(recipes.recipes)
+        dataset.addAll(recipes.recipes)
     }
 }

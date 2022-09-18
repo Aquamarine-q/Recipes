@@ -7,8 +7,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_add_favorite_border_24.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1945" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_local_fire_department_24.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_restaurant_24.xml" value="0.1945" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/drawable/search_view_background.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/activity_main.xml" value="0.12" />
@@ -16,7 +18,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/fragment_last_recipe.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/fragment_most_popular_recipe.xml" value="0.19635416666666666" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/fragment_recipe.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/fragment_recipe.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/layout/list_item.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Recipes/app/src/main/res/menu/menu.xml" value="0.22" />

@@ -4,13 +4,9 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_baseline_restaurant_24"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/favorites"
         android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="Favorites" />
-    <item
-        android:id="@+id/most_popular_recipe"
-        android:icon="@drawable/ic_baseline_local_fire_department_24"
-        android:title="Hot Recipe" />
+        android:title="@string/hot_recipe" />
 </menu>

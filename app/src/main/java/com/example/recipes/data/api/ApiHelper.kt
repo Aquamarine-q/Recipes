@@ -5,6 +5,4 @@ import retrofit2.Response
 
 interface ApiHelper {
     suspend fun getRecipes(): Response<Recipes>
-    //suspend fun getRecipeDetails(): Response<Recipe>
-    suspend fun getMostPopularRecipe(): Response<Recipes>
 }

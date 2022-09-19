@@ -20,6 +20,7 @@ data class Recipe(
     val aggregateLikes: Int,
     val healthScore: Int,
     val pricePerServing: Double,
+    val extendedIngredients: List<ExtendedIngredient>,
     val id: Long,
     val title: String?,
     val readyInMinutes: Int,
@@ -33,6 +34,7 @@ data class Recipe(
     val diets: List<String>,
     val occasions: List<String>,
     val instructions: String?,
+    val analyzedInstructions: List<AnalyzedInstruction>,
     val sourceName: String?,
     val creditsText: String?,
     val spoonacularSourceURL: String?,
@@ -55,6 +57,9 @@ data class Recipe(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readDouble(),
+        listOf<ExtendedIngredient>().apply {
+            parcel.readList(this, ExtendedIngredient::class.java.classLoader)
+        },
         parcel.readLong(),
         parcel.readString(),
         parcel.readInt(),
@@ -68,6 +73,9 @@ data class Recipe(
         parcel.createStringArrayList()!!,
         parcel.createStringArrayList()!!,
         parcel.readString(),
+        listOf<AnalyzedInstruction>().apply {
+            parcel.readList(this, AnalyzedInstruction::class.java.classLoader)
+        },
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -91,6 +99,7 @@ data class Recipe(
         parcel.writeInt(aggregateLikes)
         parcel.writeInt(healthScore)
         parcel.writeDouble(pricePerServing)
+        parcel.writeList(extendedIngredients)
         parcel.writeLong(id)
         parcel.writeString(title)
         parcel.writeInt(readyInMinutes)
@@ -104,6 +113,7 @@ data class Recipe(
         parcel.writeStringList(diets)
         parcel.writeStringList(occasions)
         parcel.writeString(instructions)
+        parcel.writeList(analyzedInstructions)
         parcel.writeString(sourceName)
         parcel.writeString(creditsText)
         parcel.writeString(spoonacularSourceURL)

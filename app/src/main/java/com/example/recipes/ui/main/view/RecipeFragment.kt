@@ -13,13 +13,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.recipes.R
 import com.example.recipes.data.model.Recipe
-import com.example.recipes.ui.main.viewmodel.RecipeViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class RecipeFragment : Fragment() {
-
-    private val recipeViewModel: RecipeViewModel by viewModel()
     private lateinit var recipeTitle: TextView
     private lateinit var recipePhoto: ImageView
     private lateinit var summary: TextView
@@ -29,7 +24,6 @@ class RecipeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recipe, container, false)
     }
 
@@ -39,16 +33,7 @@ class RecipeFragment : Fragment() {
         recipePhoto = view.findViewById(R.id.recipe_photo)
         summary = view.findViewById(R.id.summary)
         instructions = view.findViewById(R.id.instructions)
-        setupObserver()
-    }
 
-    private fun setupObserver() {
-        recipeViewModel.recipes.observe(viewLifecycleOwner) {
-            setupViews()
-        }
-    }
-
-    private fun setupViews() {
         val recipe = arguments?.getParcelable<Recipe>("recipe")
         if (recipe != null) {
             Glide.with(this)

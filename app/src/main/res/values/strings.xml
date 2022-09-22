@@ -3,6 +3,8 @@
     <string name="api_key">cf4b18993375468b913c5c0a67573d39</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
-    <string name="hot_recipe">Hot Recipe</string>
+    <string name="hot_recipes">Hot Recipes</string>
     <string name="photo_of_the_dish">photo of the dish</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="instructions">Instructions:</string>
 </resources>

@@ -6,33 +6,32 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.recipes.R
 import com.example.recipes.data.model.Recipe
+import com.example.recipes.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
-    private lateinit var recipeTitle: TextView
-    private lateinit var recipePhoto: ImageView
-    private lateinit var summary: TextView
-    private lateinit var instructions: TextView
+
+    private var _binding: FragmentRecipeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_recipe, container, false)
+    ): View {
+        _binding = FragmentRecipeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recipeTitle = view.findViewById(R.id.recipe_title)
-        recipePhoto = view.findViewById(R.id.recipe_photo)
-        summary = view.findViewById(R.id.summary)
-        instructions = view.findViewById(R.id.instructions)
+        val recipeTitle = binding.recipeTitle
+        val recipePhoto = binding.recipePhoto
+        val ingredients = binding.ingredients
+        val summary = binding.summary
+        val instructions = binding.instructions
 
         val recipe = arguments?.getParcelable<Recipe>("recipe")
         if (recipe != null) {
@@ -44,8 +43,27 @@ class RecipeFragment : Fragment() {
             recipeTitle.text = recipe.title
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 summary.text = Html.fromHtml(recipe.summary, Html.FROM_HTML_MODE_COMPACT)
-                instructions.text = Html.fromHtml(recipe.instructions, Html.FROM_HTML_MODE_COMPACT)
             }
+            var str = ""
+            recipe.extendedIngredients.forEach {
+                str += "· " + it.name + "  ${it.amount} " + it.unit + "\n"
+            }
+            ingredients.text = str
+
+            var s1 = ""
+            var i = 1
+
+            recipe.analyzedInstructions.forEach { s ->
+                s.steps.forEach {
+                    s1 += "${i++}. " + "${it.step}" + "\n\n"
+                }
+            }
+            instructions.text = s1
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

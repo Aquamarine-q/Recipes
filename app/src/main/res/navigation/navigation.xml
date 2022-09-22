@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/favorites"
         android:name="com.example.recipes.ui.main.view.FavoritesFragment"
-        android:label="Hot Recipe"
+        android:label="Hot Recipes"
         tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favorites_to_recipe"

@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.recipes.R
 import com.example.recipes.data.model.Recipes
+import com.example.recipes.databinding.FragmentHomeBinding
 import com.example.recipes.ui.main.adapter.RecipeAdapter
 import com.example.recipes.ui.main.viewmodel.MainViewModel
 import com.example.recipes.utils.Status
@@ -19,20 +19,22 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment() {
 
     private val mainViewModel: MainViewModel by viewModel()
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: RecipeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        val recyclerView = binding.recyclerView
 
         adapter = RecipeAdapter(arrayListOf())
         recyclerView.adapter = adapter
@@ -50,7 +52,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderList(recipes: Recipes) {
-        adapter.addData(recipes)
+        val allRecipes = recipes.recipes
+        adapter.addData(allRecipes)
         adapter.notifyDataSetChanged()
         adapter.setOnItemClickListener(object : RecipeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
@@ -58,10 +61,14 @@ class HomeFragment : Fragment() {
                     .supportFragmentManager
                     .findFragmentById(R.id.fragment_container) as NavHostFragment
                 val navController = navHostFragment.navController
-                val recipeId = recipes.recipes[position]
-                val bundle = bundleOf("recipe" to recipeId)
+                val bundle = bundleOf("recipe" to allRecipes[position])
                 navController.navigate(R.id.action_home_to_recipe, bundle)
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

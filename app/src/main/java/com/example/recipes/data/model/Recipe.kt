@@ -1,5 +1,6 @@
 package com.example.recipes.data.model
 
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -58,7 +59,9 @@ data class Recipe(
         parcel.readInt(),
         parcel.readDouble(),
         listOf<ExtendedIngredient>().apply {
-            parcel.readList(this, ExtendedIngredient::class.java.classLoader)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                parcel.readParcelableList(this, ExtendedIngredient::class.java.classLoader)
+            }
         },
         parcel.readLong(),
         parcel.readString(),
@@ -74,7 +77,9 @@ data class Recipe(
         parcel.createStringArrayList()!!,
         parcel.readString(),
         listOf<AnalyzedInstruction>().apply {
-            parcel.readList(this, AnalyzedInstruction::class.java.classLoader)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                parcel.readParcelableList(this, AnalyzedInstruction::class.java.classLoader)
+            }
         },
         parcel.readString(),
         parcel.readString(),
@@ -99,7 +104,9 @@ data class Recipe(
         parcel.writeInt(aggregateLikes)
         parcel.writeInt(healthScore)
         parcel.writeDouble(pricePerServing)
-        parcel.writeList(extendedIngredients)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeParcelableList(extendedIngredients, 0)
+        }
         parcel.writeLong(id)
         parcel.writeString(title)
         parcel.writeInt(readyInMinutes)
@@ -113,7 +120,9 @@ data class Recipe(
         parcel.writeStringList(diets)
         parcel.writeStringList(occasions)
         parcel.writeString(instructions)
-        parcel.writeList(analyzedInstructions)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeParcelableList(analyzedInstructions, 0)
+        }
         parcel.writeString(sourceName)
         parcel.writeString(creditsText)
         parcel.writeString(spoonacularSourceURL)

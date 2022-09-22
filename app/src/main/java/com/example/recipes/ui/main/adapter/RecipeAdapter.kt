@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.recipes.R
 import com.example.recipes.data.model.Recipe
-import com.example.recipes.data.model.Recipes
 
 class RecipeAdapter(
     private val dataset: ArrayList<Recipe>
@@ -56,7 +55,7 @@ class RecipeAdapter(
 
     override fun getItemCount() = dataset.size
 
-    fun addData(recipes: Recipes) {
-        dataset.addAll(recipes.recipes)
+    fun addData(recipes: List<Recipe>) {
+        dataset.addAll(recipes)
     }
 }

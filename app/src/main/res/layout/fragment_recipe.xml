@@ -14,8 +14,8 @@
             android:id="@+id/recipe_photo"
             android:layout_width="match_parent"
             android:layout_height="194dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/photo_of_the_dish" />
+            android:contentDescription="@string/photo_of_the_dish"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/recipe_title"
@@ -34,10 +34,38 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:text="@string/ingredients"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/teal_700"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/instructions"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/teal_700"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="16sp" />
     </LinearLayout>

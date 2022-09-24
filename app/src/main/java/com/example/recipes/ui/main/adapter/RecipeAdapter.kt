@@ -5,14 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.recipes.R
 import com.example.recipes.data.model.Recipe
+import com.example.recipes.utils.RecipeDiffUtil
 
 class RecipeAdapter(
-    private val dataset: ArrayList<Recipe>
+    private var dataset: ArrayList<Recipe>
 ) : RecyclerView.Adapter<RecipeAdapter.ItemViewHolder>() {
     private lateinit var mListener: OnItemClickListener
 
@@ -55,7 +57,10 @@ class RecipeAdapter(
 
     override fun getItemCount() = dataset.size
 
-    fun addData(recipes: List<Recipe>) {
-        dataset.addAll(recipes)
+    fun setData(newRecipeList: List<Recipe>) {
+        val diffUtil = RecipeDiffUtil(dataset, newRecipeList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        dataset = newRecipeList as ArrayList<Recipe>
+        diffResult.dispatchUpdatesTo(this)
     }
 }

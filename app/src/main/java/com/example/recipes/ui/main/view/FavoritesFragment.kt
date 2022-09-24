@@ -54,8 +54,7 @@ class FavoritesFragment : Fragment() {
 
     private fun renderList(recipes: Recipes) {
         val favoriteRecipes = recipes.recipes.filter { it.veryPopular }
-        adapter.addData(favoriteRecipes)
-        adapter.notifyDataSetChanged()
+        adapter.setData(favoriteRecipes)
         adapter.setOnItemClickListener(object : RecipeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val navHostFragment = requireActivity()

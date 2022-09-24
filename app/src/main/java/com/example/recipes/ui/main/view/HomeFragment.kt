@@ -53,8 +53,7 @@ class HomeFragment : Fragment() {
 
     private fun renderList(recipes: Recipes) {
         val allRecipes = recipes.recipes
-        adapter.addData(allRecipes)
-        adapter.notifyDataSetChanged()
+        adapter.setData(allRecipes)
         adapter.setOnItemClickListener(object : RecipeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val navHostFragment = requireActivity()

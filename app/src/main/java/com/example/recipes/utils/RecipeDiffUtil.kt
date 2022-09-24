@@ -21,9 +21,9 @@ class RecipeDiffUtil(private val oldList: List<Recipe>, private val newList: Lis
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
             oldList[oldItemPosition].id != newList[newItemPosition].id -> false
-            oldList[oldItemPosition].title != newList[newItemPosition].title -> false
-            oldList[oldItemPosition].summary != newList[newItemPosition].summary -> false
-            oldList[oldItemPosition].instructions != newList[newItemPosition].instructions -> false
+            !oldList[oldItemPosition].title.equals(newList[newItemPosition].title) -> false
+            !oldList[oldItemPosition].summary.equals(newList[newItemPosition].summary) -> false
+            !oldList[oldItemPosition].instructions.equals(newList[newItemPosition].instructions) -> false
             else -> true
         }
     }
